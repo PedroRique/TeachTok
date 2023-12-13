@@ -1,7 +1,7 @@
 import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
 import React from 'react';
-import { Dimensions, Text, View } from 'react-native';
-import { IFeedQuestion } from '../../shared/models/FeedQuestion';
+import { Dimensions, ImageBackground, Text, View } from 'react-native';
+import { IFeedQuestion } from '../../shared/models/IFeedQuestion';
 import { styles } from './styles';
 
 export const FeedQuestion = ({ question }: { question: IFeedQuestion }) => {
@@ -15,7 +15,13 @@ export const FeedQuestion = ({ question }: { question: IFeedQuestion }) => {
           height: Dimensions.get('window').height - tabBarHeight,
         },
       ]}>
-      <Text>{question.description}</Text>
+      <ImageBackground
+        source={{ uri: question.image }}
+        style={styles.imageBackground}
+        resizeMode="cover">
+        <Text>{question.question}</Text>
+        <Text>{question.description}</Text>
+      </ImageBackground>
     </View>
   );
 };

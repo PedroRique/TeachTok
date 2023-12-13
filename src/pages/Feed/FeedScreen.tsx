@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { FlatList, View } from 'react-native';
 import { FeedQuestion } from '../../components/FeedQuestion/FeedQuestion';
-import { IFeedQuestion } from '../../shared/models/FeedQuestion';
+import { IFeedQuestion } from '../../shared/models/IFeedQuestion';
 import { styles } from './styles';
 
 export const FeedScreen = () => {
