@@ -4,6 +4,8 @@ import { Dimensions, ImageBackground, Text, View } from 'react-native';
 import { IFeedQuestion } from '../../shared/models/IFeedQuestion';
 import { styles } from './styles';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import PlaylistIcon from '../../../assets/icons/Playlist.svg';
+import ChevronRightIcon from '../../../assets/icons/ChevronRight.svg';
 
 export const FeedQuestion = ({ question }: { question: IFeedQuestion }) => {
   const tabBarHeight = useBottomTabBarHeight();
@@ -29,9 +31,15 @@ export const FeedQuestion = ({ question }: { question: IFeedQuestion }) => {
             </View>
           ))}
 
-          <Text>{question.user.name}</Text>
-          <Text>{question.description}</Text>
-          <Text>{question.playlist}</Text>
+          <Text style={styles.questionUserName}>{question.user.name}</Text>
+          <Text style={styles.questionDescription}>{question.description}</Text>
+          <View style={styles.questionPlaylist}>
+            <PlaylistIcon />
+            <Text style={styles.questionPlaylistText}>
+              Playlist • {question.playlist}
+            </Text>
+            <ChevronRightIcon />
+          </View>
         </SafeAreaView>
       </ImageBackground>
     </View>

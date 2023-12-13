@@ -32,4 +32,25 @@ export const styles = StyleSheet.create({
       height: 1,
     },
   },
+  questionUserName: {
+    color: 'white',
+  },
+  questionDescription: {
+    color: 'white',
+  },
+  questionPlaylist: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#161616',
+    paddingHorizontal: 16,
+    paddingVertical: 10,
+  },
+  questionPlaylistText: {
+    color: 'white',
+    fontSize: 13,
+    fontWeight: '600',
+    marginLeft: 4,
+    marginRight: 'auto',
+  },
 });
