@@ -3,7 +3,7 @@ import { Dimensions, FlatList, ListRenderItem, Text, View } from 'react-native';
 import { styles } from './styles';
 import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
 
-export const Feed = () => {
+export const FeedScreen = () => {
   const list = [1, 2, 3, 4];
   const tabBarHeight = useBottomTabBarHeight();
 
