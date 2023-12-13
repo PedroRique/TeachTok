@@ -1,10 +1,10 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import React from 'react';
-import { FeedScreen } from './Feed/FeedScreen';
-import Home from '../assets/icons/Home.svg';
-import Discover from '../assets/icons/Discover.svg';
 import Bookmarks from '../assets/icons/Bookmarks.svg';
-import { EmptyScreen } from './Feed/EmptyScreen';
+import Discover from '../assets/icons/Discover.svg';
+import Home from '../assets/icons/Home.svg';
+import { EmptyScreen } from './pages/Feed/EmptyScreen';
+import { FeedScreen } from './pages/Feed/FeedScreen';
 
 const Tab = createBottomTabNavigator();
 
