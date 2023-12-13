@@ -25,11 +25,13 @@ export const FeedQuestion = ({ question }: { question: IFeedQuestion }) => {
 
           {question.options.map(option => (
             <View key={option.id} style={styles.questionOption}>
-              <Text>{option.answer}</Text>
+              <Text style={styles.questionOptionText}>{option.answer}</Text>
             </View>
           ))}
 
+          <Text>{question.user.name}</Text>
           <Text>{question.description}</Text>
+          <Text>{question.playlist}</Text>
         </SafeAreaView>
       </ImageBackground>
     </View>

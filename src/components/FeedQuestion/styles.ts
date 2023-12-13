@@ -21,4 +21,15 @@ export const styles = StyleSheet.create({
     marginBottom: 8,
     padding: 12,
   },
+  questionOptionText: {
+    color: 'white',
+    fontWeight: '500',
+    fontSize: 17,
+    textShadowColor: 'black',
+    textShadowRadius: 1,
+    textShadowOffset: {
+      width: 1,
+      height: 1,
+    },
+  },
 });
