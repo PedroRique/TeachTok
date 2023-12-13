@@ -3,6 +3,7 @@ import React from 'react';
 import { Dimensions, ImageBackground, Text, View } from 'react-native';
 import { IFeedQuestion } from '../../shared/models/IFeedQuestion';
 import { styles } from './styles';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export const FeedQuestion = ({ question }: { question: IFeedQuestion }) => {
   const tabBarHeight = useBottomTabBarHeight();
@@ -19,8 +20,17 @@ export const FeedQuestion = ({ question }: { question: IFeedQuestion }) => {
         source={{ uri: question.image }}
         style={styles.imageBackground}
         resizeMode="cover">
-        <Text>{question.question}</Text>
-        <Text>{question.description}</Text>
+        <SafeAreaView>
+          <Text style={styles.questionText}>{question.question}</Text>
+
+          {question.options.map(option => (
+            <View key={option.id} style={styles.questionOption}>
+              <Text>{option.answer}</Text>
+            </View>
+          ))}
+
+          <Text>{question.description}</Text>
+        </SafeAreaView>
       </ImageBackground>
     </View>
   );
