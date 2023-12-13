@@ -1,9 +1,10 @@
 import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
 import React from 'react';
 import { Dimensions, Text, View } from 'react-native';
-import { styles } from '../pages/Feed/styles';
+import { IFeedQuestion } from '../../shared/models/FeedQuestion';
+import { styles } from './styles';
 
-export const FeedPost = ({ post }: { post: number }) => {
+export const FeedQuestion = ({ question }: { question: IFeedQuestion }) => {
   const tabBarHeight = useBottomTabBarHeight();
 
   return (
@@ -14,7 +15,7 @@ export const FeedPost = ({ post }: { post: number }) => {
           height: Dimensions.get('window').height - tabBarHeight,
         },
       ]}>
-      <Text>{post}</Text>
+      <Text>{question.description}</Text>
     </View>
   );
 };
