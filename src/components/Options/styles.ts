@@ -6,6 +6,8 @@ export const styles = StyleSheet.create({
     borderRadius: 8,
     marginBottom: 8,
     padding: 12,
+    position: 'relative',
+    overflow: 'hidden',
   },
   optionText: {
     color: 'white',
@@ -17,5 +19,18 @@ export const styles = StyleSheet.create({
       width: 1,
       height: 1,
     },
+  },
+  feedbackBackground: {
+    top: 0,
+    left: 0,
+    bottom: 0,
+    right: 0,
+    position: 'absolute',
+  },
+  wrongBackground: {
+    backgroundColor: '#ff000066',
+  },
+  rightBackground: {
+    backgroundColor: '#00ff0066',
   },
 });

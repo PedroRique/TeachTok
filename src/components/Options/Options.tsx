@@ -1,22 +1,45 @@
-import React from 'react';
-import { Text, TouchableOpacity } from 'react-native';
-import { IOption } from '../../shared/models/IOption';
+import React, { useMemo } from 'react';
+import { Animated, Text, TouchableOpacity } from 'react-native';
+import { IOption, IOptionWithResult } from '../../shared/models/IOption';
 import { styles } from './styles';
 
 export const Options = ({
   options,
-  onSelect,
+  correctOptions,
 }: {
   options: IOption[];
-  onSelect: (option: IOption) => void;
+  correctOptions: IOption[];
 }) => {
+  const optionsWithResult: IOptionWithResult[] = useMemo(() => {
+    return options.map(option => ({
+      ...option,
+      isCorrect: correctOptions.some(
+        correctOption => correctOption.id === option.id,
+      ),
+    }));
+  }, [options, correctOptions]);
+
+  const checkAnswer = (option: IOption) => {
+    correctOptions.some(correctOption => correctOption.id === option.id);
+  };
+
   return (
     <>
-      {options.map(option => (
+      {optionsWithResult.map(option => (
         <TouchableOpacity
           key={option.id}
           style={styles.option}
-          onPress={() => onSelect(option)}>
+          onPress={() => checkAnswer(option)}>
+          {option.isCorrect && (
+            <Animated.View
+              style={[styles.feedbackBackground, styles.rightBackground]}
+            />
+          )}
+          {!option.isCorrect && (
+            <Animated.View
+              style={[styles.feedbackBackground, styles.wrongBackground]}
+            />
+          )}
           <Text style={styles.optionText}>{option.answer}</Text>
         </TouchableOpacity>
       ))}

@@ -1,6 +1,6 @@
 import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
 import React, { useCallback, useEffect, useState } from 'react';
-import { Alert, Dimensions, ImageBackground, Text, View } from 'react-native';
+import { Dimensions, ImageBackground, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Bookmarks from '../../../assets/icons/Bookmarks.svg';
 import ChevronRightIcon from '../../../assets/icons/ChevronRight.svg';
@@ -19,7 +19,7 @@ import { styles } from './styles';
 export const FeedQuestion = ({ question }: { question: IFeedQuestion }) => {
   const tabBarHeight = useBottomTabBarHeight();
 
-  const [correctOptionsIds, setCorrectOptionsIds] = useState<string[]>();
+  const [correctOptions, setCorrectOptions] = useState<IOption[]>([]);
 
   const getAnswer = useCallback(() => {
     return fetch(
@@ -27,7 +27,7 @@ export const FeedQuestion = ({ question }: { question: IFeedQuestion }) => {
     )
       .then(response => response.json())
       .then((json: IQuestionReveal) => {
-        setCorrectOptionsIds(json.correct_options?.map(opt => opt.id));
+        setCorrectOptions(json.correct_options);
       })
       .catch(error => {
         console.error(error);
@@ -37,12 +37,6 @@ export const FeedQuestion = ({ question }: { question: IFeedQuestion }) => {
   useEffect(() => {
     getAnswer();
   }, [getAnswer]);
-
-  const checkAnswer = (option: IOption) => {
-    if (correctOptionsIds?.includes(option.id)) {
-      Alert.alert('success');
-    }
-  };
 
   return (
     <View
@@ -61,7 +55,10 @@ export const FeedQuestion = ({ question }: { question: IFeedQuestion }) => {
             <View style={styles.flexOne}>
               <Text style={styles.questionText}>{question.question}</Text>
 
-              <Options options={question.options} onSelect={checkAnswer} />
+              <Options
+                options={question.options}
+                correctOptions={correctOptions}
+              />
 
               <Text style={styles.questionUserName}>{question.user.name}</Text>
               <Text style={styles.questionDescription}>

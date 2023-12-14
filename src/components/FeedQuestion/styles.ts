@@ -22,7 +22,6 @@ export const styles = StyleSheet.create({
     color: 'white',
     fontSize: 22,
     fontWeight: '500',
-    width: '70%',
     padding: 8,
     marginBottom: 'auto',
   },
