@@ -2,8 +2,18 @@ import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
   feedItem: {},
-  imageBackground: {
+  flexOne: {
     flex: 1,
+  },
+  questionContainer: {
+    flexDirection: 'row',
+    display: 'flex',
+    flex: 1,
+    marginBottom: 16,
+    paddingLeft: 16,
+    paddingRight: 8,
+    paddingTop: 40,
+    columnGap: 12,
   },
   questionText: {
     backgroundColor: '#00000099',
@@ -14,6 +24,7 @@ export const styles = StyleSheet.create({
     fontWeight: '500',
     width: '70%',
     padding: 8,
+    marginBottom: 'auto',
   },
   questionOption: {
     backgroundColor: '#ffffff66',
@@ -34,9 +45,14 @@ export const styles = StyleSheet.create({
   },
   questionUserName: {
     color: 'white',
+    marginTop: 24,
+    fontWeight: '500',
+    fontSize: 15,
   },
   questionDescription: {
     color: 'white',
+    fontWeight: '400',
+    fontSize: 13,
   },
   questionPlaylist: {
     display: 'flex',
@@ -53,4 +69,5 @@ export const styles = StyleSheet.create({
     marginLeft: 4,
     marginRight: 'auto',
   },
+  sidebarContainer: { marginTop: 'auto', rowGap: 15 },
 });
