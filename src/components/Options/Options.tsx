@@ -34,6 +34,7 @@ export const Options = ({
         <TouchableOpacity
           key={option.id}
           style={styles.option}
+          disabled={!!selectedAnswer}
           onPress={() => selectAnswer(option)}>
           {revealAnswer && (
             <>
