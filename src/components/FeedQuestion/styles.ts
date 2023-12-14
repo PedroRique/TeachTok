@@ -5,6 +5,7 @@ export const styles = StyleSheet.create({
   flexOne: {
     flex: 1,
   },
+  boldText: { fontWeight: '700' },
   safeAreaContainer: {
     backgroundColor: '#00000073',
   },
@@ -33,6 +34,7 @@ export const styles = StyleSheet.create({
     marginTop: 24,
     fontWeight: '500',
     fontSize: 15,
+    marginBottom: 6,
   },
   questionDescription: {
     color: 'white',

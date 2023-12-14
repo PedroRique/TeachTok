@@ -38,6 +38,19 @@ export const FeedQuestion = ({ question }: { question: IFeedQuestion }) => {
     getAnswer();
   }, [getAnswer]);
 
+  const renderDescription = (text: string) => {
+    return text.split(' ').map((word, index) => {
+      if (word.startsWith('#')) {
+        return (
+          <Text key={index} style={styles.boldText}>
+            {word + ' '}
+          </Text>
+        );
+      }
+      return <Text key={index}>{word + ' '}</Text>;
+    });
+  };
+
   return (
     <View
       style={[
@@ -67,7 +80,7 @@ export const FeedQuestion = ({ question }: { question: IFeedQuestion }) => {
 
               <Text style={styles.questionUserName}>{question.user.name}</Text>
               <Text style={styles.questionDescription}>
-                {question.description}
+                {renderDescription(question.description)}
               </Text>
             </View>
 

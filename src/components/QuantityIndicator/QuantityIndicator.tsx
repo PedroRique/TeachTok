@@ -12,7 +12,7 @@ export const QuantityIndicator = ({
 }) => {
   return (
     <TouchableOpacity style={styles.buttonContainer}>
-      <Icon fill="white" />
+      <Icon fill="white" width={30} height={30} />
       <Text style={styles.quantityText}>{quantity}</Text>
     </TouchableOpacity>
   );
