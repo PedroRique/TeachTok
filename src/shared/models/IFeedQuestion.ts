@@ -1,20 +1,13 @@
+import { IOption } from './IOption';
+import { IUser } from './IUser';
+
 export interface IFeedQuestion {
   description: string;
   id: number;
   image: string;
-  options: Option[];
+  options: IOption[];
   playlist: string;
   question: string;
   type: string;
-  user: User;
-}
-
-export interface Option {
-  answer: string;
-  id: string;
-}
-
-export interface User {
-  avatar: string;
-  name: string;
+  user: IUser;
 }

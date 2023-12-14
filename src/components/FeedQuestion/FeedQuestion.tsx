@@ -1,6 +1,6 @@
 import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
-import React from 'react';
-import { Dimensions, ImageBackground, Text, View } from 'react-native';
+import React, { useCallback, useEffect, useState } from 'react';
+import { Alert, Dimensions, ImageBackground, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Bookmarks from '../../../assets/icons/Bookmarks.svg';
 import ChevronRightIcon from '../../../assets/icons/ChevronRight.svg';
@@ -9,6 +9,8 @@ import Like from '../../../assets/icons/Like.svg';
 import PlaylistIcon from '../../../assets/icons/Playlist.svg';
 import Share from '../../../assets/icons/Share.svg';
 import { IFeedQuestion } from '../../shared/models/IFeedQuestion';
+import { IOption } from '../../shared/models/IOption';
+import { IQuestionReveal } from '../../shared/models/IQuestionReveal';
 import { AvatarFollowButton } from '../AvatarFollowButton/AvatarFollowButton';
 import { Options } from '../Options/Options';
 import { QuantityIndicator } from '../QuantityIndicator/QuantityIndicator';
@@ -16,6 +18,31 @@ import { styles } from './styles';
 
 export const FeedQuestion = ({ question }: { question: IFeedQuestion }) => {
   const tabBarHeight = useBottomTabBarHeight();
+
+  const [correctOptionsIds, setCorrectOptionsIds] = useState<string[]>();
+
+  const getAnswer = useCallback(() => {
+    return fetch(
+      `https://cross-platform.rp.devfactory.com/reveal?id=${question.id}`,
+    )
+      .then(response => response.json())
+      .then((json: IQuestionReveal) => {
+        setCorrectOptionsIds(json.correct_options?.map(opt => opt.id));
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  }, [question]);
+
+  useEffect(() => {
+    getAnswer();
+  }, [getAnswer]);
+
+  const checkAnswer = (option: IOption) => {
+    if (correctOptionsIds?.includes(option.id)) {
+      Alert.alert('success');
+    }
+  };
 
   return (
     <View
@@ -34,7 +61,7 @@ export const FeedQuestion = ({ question }: { question: IFeedQuestion }) => {
             <View style={styles.flexOne}>
               <Text style={styles.questionText}>{question.question}</Text>
 
-              <Options options={question.options} />
+              <Options options={question.options} onSelect={checkAnswer} />
 
               <Text style={styles.questionUserName}>{question.user.name}</Text>
               <Text style={styles.questionDescription}>
