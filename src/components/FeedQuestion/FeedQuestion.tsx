@@ -9,9 +9,10 @@ import Like from '../../../assets/icons/Like.svg';
 import PlaylistIcon from '../../../assets/icons/Playlist.svg';
 import Share from '../../../assets/icons/Share.svg';
 import { IFeedQuestion } from '../../shared/models/IFeedQuestion';
+import { AvatarFollowButton } from '../AvatarFollowButton/AvatarFollowButton';
+import { Options } from '../Options/Options';
 import { QuantityIndicator } from '../QuantityIndicator/QuantityIndicator';
 import { styles } from './styles';
-import { AvatarFollowButton } from '../AvatarFollowButton/AvatarFollowButton';
 
 export const FeedQuestion = ({ question }: { question: IFeedQuestion }) => {
   const tabBarHeight = useBottomTabBarHeight();
@@ -33,11 +34,7 @@ export const FeedQuestion = ({ question }: { question: IFeedQuestion }) => {
             <View style={styles.flexOne}>
               <Text style={styles.questionText}>{question.question}</Text>
 
-              {question.options.map(option => (
-                <View key={option.id} style={styles.questionOption}>
-                  <Text style={styles.questionOptionText}>{option.answer}</Text>
-                </View>
-              ))}
+              <Options options={question.options} />
 
               <Text style={styles.questionUserName}>{question.user.name}</Text>
               <Text style={styles.questionDescription}>
