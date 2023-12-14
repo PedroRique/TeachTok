@@ -53,7 +53,12 @@ export const FeedQuestion = ({ question }: { question: IFeedQuestion }) => {
         <SafeAreaView style={[styles.flexOne, styles.safeAreaContainer]}>
           <View style={styles.questionContainer}>
             <View style={styles.flexOne}>
-              <Text style={styles.questionText}>{question.question}</Text>
+              <Text
+                style={styles.questionText}
+                numberOfLines={5}
+                adjustsFontSizeToFit>
+                {question.question}
+              </Text>
 
               <Options
                 options={question.options}

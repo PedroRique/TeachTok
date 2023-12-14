@@ -63,7 +63,12 @@ export const Options = ({
             </>
           )}
 
-          <Text style={styles.optionText}>{option.answer}</Text>
+          <Text
+            style={styles.optionText}
+            numberOfLines={2}
+            adjustsFontSizeToFit>
+            {option.answer}
+          </Text>
         </TouchableOpacity>
       ))}
     </>
