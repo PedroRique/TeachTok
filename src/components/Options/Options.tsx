@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from 'react';
-import { Animated, Text, TouchableOpacity } from 'react-native';
+import { Animated, Image, Text, TouchableOpacity } from 'react-native';
 import { IOption, IOptionWithResult } from '../../shared/models/IOption';
 import { styles } from './styles';
 
@@ -43,13 +43,26 @@ export const Options = ({
                   style={[styles.feedbackBackground, styles.rightBackground]}
                 />
               )}
-              {!option.isCorrect && option.isSelected && (
-                <Animated.View
-                  style={[styles.feedbackBackground, styles.wrongBackground]}
+              {option.isCorrect && option.isSelected && (
+                <Image
+                  style={[styles.feedbackGif, styles.rightGif]}
+                  source={require('./../../../assets/gifs/right.gif')}
                 />
+              )}
+              {!option.isCorrect && option.isSelected && (
+                <>
+                  <Animated.View
+                    style={[styles.feedbackBackground, styles.wrongBackground]}
+                  />
+                  <Image
+                    style={[styles.feedbackGif, styles.wrongGif]}
+                    source={require('./../../../assets/gifs/wrong.gif')}
+                  />
+                </>
               )}
             </>
           )}
+
           <Text style={styles.optionText}>{option.answer}</Text>
         </TouchableOpacity>
       ))}

@@ -13,6 +13,7 @@ export const styles = StyleSheet.create({
     color: 'white',
     fontWeight: '500',
     fontSize: 17,
+    width: '90%',
     textShadowColor: 'black',
     textShadowRadius: 1,
     textShadowOffset: {
@@ -32,5 +33,19 @@ export const styles = StyleSheet.create({
   },
   rightBackground: {
     backgroundColor: '#00ff0066',
+  },
+  feedbackGif: {
+    width: 50,
+    height: 50,
+    position: 'absolute',
+    right: 0,
+  },
+  rightGif: {
+    top: -10,
+    transform: [{ scaleX: -1 }],
+  },
+  wrongGif: {
+    top: 10,
+    transform: [{ scaleY: -1 }],
   },
 });
