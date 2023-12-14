@@ -63,6 +63,12 @@ export const Options = ({
             </>
           )}
 
+          {(!revealAnswer || (!option.isSelected && !option.isCorrect)) && (
+            <Animated.View
+              style={[styles.feedbackBackground, styles.neutralBackground]}
+            />
+          )}
+
           <Text
             style={styles.optionText}
             numberOfLines={2}

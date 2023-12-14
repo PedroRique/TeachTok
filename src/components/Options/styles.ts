@@ -2,7 +2,6 @@ import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
   option: {
-    backgroundColor: '#ffffff66',
     borderRadius: 8,
     marginBottom: 8,
     padding: 12,
@@ -28,11 +27,14 @@ export const styles = StyleSheet.create({
     right: 0,
     position: 'absolute',
   },
+  neutralBackground: {
+    backgroundColor: '#ffffff66',
+  },
   wrongBackground: {
-    backgroundColor: '#ff000066',
+    backgroundColor: '#DC5F5FB2',
   },
   rightBackground: {
-    backgroundColor: '#00ff0066',
+    backgroundColor: '#28B18FB2',
   },
   feedbackGif: {
     width: 50,
