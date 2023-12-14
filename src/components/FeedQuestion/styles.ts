@@ -15,7 +15,7 @@ export const styles = StyleSheet.create({
     marginBottom: 16,
     paddingLeft: 16,
     paddingRight: 8,
-    paddingTop: 40,
+    paddingTop: 95,
     columnGap: 12,
   },
   questionText: {

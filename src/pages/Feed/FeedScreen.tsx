@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { FlatList, View } from 'react-native';
 import { FeedQuestion } from '../../components/FeedQuestion/FeedQuestion';
+import { Topbar } from '../../components/Topbar/Topbar';
 import { IFeedQuestion } from '../../shared/models/IFeedQuestion';
 import { styles } from './styles';
 
@@ -24,6 +25,7 @@ export const FeedScreen = () => {
 
   return (
     <View style={styles.container}>
+      <Topbar />
       <FlatList
         data={questions}
         renderItem={({ item }) => <FeedQuestion question={item} />}
