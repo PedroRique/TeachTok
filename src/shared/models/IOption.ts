@@ -5,4 +5,5 @@ export interface IOption {
 
 export interface IOptionWithResult extends IOption {
   isCorrect: boolean;
+  isSelected: boolean;
 }
