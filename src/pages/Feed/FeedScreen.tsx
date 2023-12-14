@@ -29,7 +29,7 @@ export const FeedScreen = () => {
         renderItem={({ item }) => <FeedQuestion question={item} />}
         onEndReached={getNextQuestion}
         pagingEnabled
-        keyExtractor={item => String(item.id)}
+        keyExtractor={(item, index) => `${item.id}-${index}`}
       />
     </View>
   );

@@ -5,6 +5,9 @@ export const styles = StyleSheet.create({
   flexOne: {
     flex: 1,
   },
+  safeAreaContainer: {
+    backgroundColor: '#00000073',
+  },
   questionContainer: {
     flexDirection: 'row',
     display: 'flex',

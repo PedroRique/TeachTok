@@ -50,7 +50,7 @@ export const FeedQuestion = ({ question }: { question: IFeedQuestion }) => {
         source={{ uri: question.image }}
         style={styles.flexOne}
         resizeMode="cover">
-        <SafeAreaView style={styles.flexOne}>
+        <SafeAreaView style={[styles.flexOne, styles.safeAreaContainer]}>
           <View style={styles.questionContainer}>
             <View style={styles.flexOne}>
               <Text style={styles.questionText}>{question.question}</Text>
